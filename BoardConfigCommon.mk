@@ -7,6 +7,7 @@
 BOARD_VENDOR := xiaomi
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 COMMON_PATH := device/xiaomi/sdm845-common
 
@@ -47,9 +48,6 @@ TARGET_BOARD_PLATFORM := sdm845
 # Audio
 TARGET_PROVIDES_AUDIO_EXTNS := true
 
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
-
 # Graphics
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
@@ -59,8 +57,11 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(COMMON_PATH)/device_framework_matrix.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
+DEVICE_MATRIX_FILE += \
+    $(COMMON_PATH)/compatibility_matrix.xml \
+    device/qcom/common/compatibility_matrix.xml
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
@@ -109,11 +110,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
-# Security patch level
-VENDOR_SECURITY_PATCH := 2020-12-01
-
 # SELinux
-include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
