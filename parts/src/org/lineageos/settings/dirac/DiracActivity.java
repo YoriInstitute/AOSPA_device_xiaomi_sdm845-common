@@ -19,6 +19,7 @@ package org.lineageos.settings.dirac;
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.widget.R;
 
 public class DiracActivity extends CollapsingToolbarBaseActivity {
 
@@ -29,7 +30,7 @@ public class DiracActivity extends CollapsingToolbarBaseActivity {
         super.onCreate(savedInstanceState);
 
         getFragmentManager().beginTransaction().replace(
-                com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                R.id.content_frame,
                 new DiracSettingsFragment(), TAG_DIRAC).commit();
     }
 }
