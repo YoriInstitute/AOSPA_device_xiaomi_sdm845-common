@@ -29,6 +29,9 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
 
+# GPS
+LOC_HIDL_VERSION := 4.0
+
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x00000000
@@ -38,8 +41,9 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := vendor/xiaomi/mi845_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm845
+KERNEL_CUSTOM_LLVM := true
+TARGET_KERNEL_APPEND_DTB := true
+TARGET_KERNEL_VERSION := 4.9
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm845
@@ -60,12 +64,8 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix_legacy.xml \
-    hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml \
-    vendor/lineage/config/device_framework_matrix.xml
+    hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml 
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
@@ -94,8 +94,6 @@ BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE := 1073741824
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 5163188224 # (BOARD_SUPER_PARTITION_SIZE - 4194304) 4MiB overhead
-
-include vendor/lineage/config/BoardConfigReservedSize.mk
 
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -134,12 +132,12 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2020-12-01
 
 # SELinux
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
-include device/qcom/sepolicy_vndr/SEPolicy.mk
-
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+BOARD_SEPOLICY_M4DEFS += \
+    sysfs_battery_supply=vendor_sysfs_battery_supply \
+    sysfs_usb_supply=vendor_sysfs_usb_supply
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

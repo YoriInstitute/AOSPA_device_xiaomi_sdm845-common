@@ -1,1 +1,4 @@
-hal_client_domain(vendor_vppservice, hal_capabilityconfigstore_qti)
+type public_adsprpcd_file, file_type;
+
+allow vendor_vppservice mnt_vendor_file:file { read open getattr map write };
+allow vendor_vppservice public_adsprpcd_file:file { read open getattr map write };
