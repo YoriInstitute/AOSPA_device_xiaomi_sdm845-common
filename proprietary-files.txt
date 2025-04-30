@@ -409,6 +409,10 @@ vendor/firmware/ipa_fws.mdt
 vendor/bin/msm_irqbalance
 vendor/etc/msm_irqbalance.conf
 
+# Libtinyxml
+vendor/lib/libtinyxml.so
+vendor/lib64/libtinyxml.so
+
 # Listen
 vendor/lib64/hw/sound_trigger.primary.sdm845.so|36f4868c560deaffc07e661893e145167d707fbe
 vendor/lib64/libcapiv2svacnn.so
