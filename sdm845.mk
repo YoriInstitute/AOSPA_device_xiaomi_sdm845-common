@@ -176,6 +176,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.2.vendor
 
+# ParanoidDoze
+PRODUCT_PACKAGES += \
+    ParanoidDoze
+
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
