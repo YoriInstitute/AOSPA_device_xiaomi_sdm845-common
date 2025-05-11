@@ -112,6 +112,10 @@ vendor/bin/hvdcp_opti
 vendor/bin/init.qti.chg_policy.sh
 vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc
 
+# Crypto
+vendor/lib/libcrypto_shim.so
+vendor/lib64/libcrypto_shim.so
+
 # CNE
 vendor/app/CneApp/CneApp.apk
 vendor/bin/cnd
