@@ -1,2 +1,5 @@
 ro.sensor.pickup=xiaomi.sensor.pickup
 ro.sensor.proximity=true
+
+# Face Unlock
+ro.face.sense_service.camera_id=5
