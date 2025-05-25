@@ -68,6 +68,10 @@ vendor/lib/libhfp.so
 vendor/lib/libsndmonitor.so
 vendor/lib/libspkrprot.so
 
+# Audio Libraries (system_ext) - From OOS SKQ1.211113.001 P.202208171858
+system_ext/lib/libvraudio.so|6688a5ad7d8a7f5ee0d3b233822e00f7000c67eb
+system_ext/lib64/libvraudio.so|7f080532c0e73b1a7aa3ab3c740e4d5b48bd7897
+
 # Audio FX modules
 system/etc/permissions/audiosphere.xml
 vendor/lib64/soundfx/libasphere.so
