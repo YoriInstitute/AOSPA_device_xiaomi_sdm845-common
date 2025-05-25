@@ -1,4 +1,6 @@
 # Audio
+ro.audio.soundtrigger=sva
+ro.audio.soundtrigger.lowpower=true
 audio.offload.video=true
 ro.af.client_heap_size_kbyte=7168
 ro.config.vc_call_vol_steps=11
@@ -8,6 +10,7 @@ ro.bluetooth.a2dp_offload.supported=true
 
 # Camera
 camera.disable_zsl_mode=true
+vendor.camera.aux.packagelist=com.android.camera,org.codeaurora.snapcam,org.lineageos.aperture,co.aospa.sense
 
 # Data modules
 persist.data.df.dev_name=rmnet_usb0
